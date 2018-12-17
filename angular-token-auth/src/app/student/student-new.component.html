@@ -1,0 +1,88 @@
+
+
+<div class="row">
+  <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <form (ngSubmit)="createStudent(student); studentForm.reset()" #studentForm='ngForm'>
+     
+      <div class="form-group">
+        <label for="student-name">
+          <h3>Student Name</h3>
+        </label>
+        <input type="text" class="form-control" id="name"
+          required
+          name="name"
+          placeholder="Student Name"
+          #name='ngModel'
+          [(ngModel)]='student.name'>
+
+          <div [hidden]='name.valid || name.pristine'
+            class="alert alert-danger">
+            Student name is required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">
+          <h3>Student Email</h3>
+        </label>
+        <input type="email" class="form-control" id="email"
+          required
+          name="email"
+          placeholder="Student Email"
+          #email='ngModel'
+          [(ngModel)]='student.email'  [email]="true">
+        
+        <div [hidden]='email.valid || email.pristine ' class="alert alert-danger" *ngIf="email.value !== '' && email.untouched && email.invalid && email.unique">
+           Invalid Email Id
+      </div>
+      
+      </div>
+
+
+      <div class="form-group">
+        <label for="dob">
+          <h3>Student Date of Birth</h3>
+        </label>
+        <input type="date" class="form-control" id="dob"
+          required
+          name="dob"
+          placeholder="Student Date of Birth"
+          #dob='ngModel'
+          [(ngModel)]='student.dob'>
+        
+        <div [hidden]='dob.valid'
+          class="alert alert-danger" *ngIf="Invalid">
+           Please enter a valid Date of Birth
+      </div>
+      </div>
+
+
+      <div class="form-group">
+        <label for="phone">
+          <h3>Mobile Number</h3>
+        </label>
+        <input type="tel" class="form-control" id="phone"
+              required
+              name="phone"
+              placeholder="Student Mobile Number"
+              #dob='ngModel'
+              [(ngModel)]='student.phone' maxlength="10" minlength="6" pattern="[0-9]+">
+        
+        <div [hidden]='phone.valid'
+          class="alert alert-danger" *ngIf="Invalid">
+           Please enter a valid Mobile number
+      </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary" [disabled]="!studentForm.form.valid" >Add Student</button>
+
+      <div [hidden]="!submitted" class="alert alert-success">
+        Student added successfully.
+        <a class="alert-link" routerLink="/students/list">View all Students</a>
+      </div>
+
+
+    </form>
+
+  </div>
+</div>

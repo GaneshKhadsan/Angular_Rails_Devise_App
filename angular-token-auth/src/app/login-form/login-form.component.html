@@ -1,0 +1,44 @@
+
+
+<div class="row">
+    <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+       <form  #f='ngForm' >
+       
+        <div class="input-field col s12">
+         <input [attr.id]="email"
+                type="email"
+                autocomplete="email"
+                required
+                name='email' 
+                [(ngModel)]="signInUser.email" 
+                class="validate">
+         <label for="email">Email</label>
+       </div>
+
+
+       <div class="input-field col s12">
+         <input [attr.id]="password" 
+                type="password" 
+                required  
+                name='password' 
+                autocomplete="current-password"
+                [(ngModel)]="signInUser.password" 
+                class="validate">
+         
+         <label for="password">Password</label>
+       </div>
+   
+       <div class="col s12 ">
+             <button type="button" 
+                     [disabled]="!(f.valid)" 
+                     [ngClass]="{'disabled': !(f.valid)}" 
+                     class="waves-effect waves-light btn blue right" (click)="(onSignInSubmit())" [routerLink]="['/home']"> 
+               Login </button>
+        
+              <span class="grey-text text-darken-2" >
+                Don't have an account? <a [routerLink]="['/register']">Click here to Register.</a>
+              </span>
+       </div>      
+  </form>
+</div>
+</div>

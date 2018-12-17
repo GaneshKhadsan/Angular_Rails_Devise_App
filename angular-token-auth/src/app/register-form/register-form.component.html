@@ -1,0 +1,83 @@
+
+
+<div class="row">
+  <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3">
+    <form  #register="ngForm" >
+              <div class="input-field col s12">
+                <input [attr.id]="name"
+                       type="text"
+                       autocomplete="name"
+                       required
+                       name='name'
+                       [(ngModel)]="signUpUser.name"
+                       class="validate">
+                <label for="name">Name</label>
+              </div>
+
+              <div class="input-field col s12">
+                <input [attr.id]="email"
+                       type="email"
+                       autocomplete="email"
+                       required
+                       name='email'
+                       [(ngModel)]="signUpUser.email"
+                       class="validate">
+                <label for="email">Email</label>
+              </div>
+            
+              <div class="input-field col s12">
+                <input [attr.id]="nickname"
+                       type="text"
+                       autocomplete="nickname"
+                       required
+                       name='nickname'
+                       [(ngModel)]="signUpUser.nickname"
+                       class="validate">
+                <label for="nickname">User Name</label>
+              </div>
+            
+              <div class="input-field col s12">
+                <input [attr.id]="password"
+                       type="password"
+                       autocomplete="new-password"
+                       required
+                       name='password'
+                       [(ngModel)]="signUpUser.password"
+                       class="validate">
+                <label for="password">Password</label>
+              </div>
+            
+           <div class="input-field col s12">
+              <input [attr.id]="password_confirmation"
+                      type="password"
+                      autocomplete="new-password"
+                     required
+                     name='password_confirmation'
+                     [(ngModel)]="signUpUser.passwordConfirmation"
+                     class="validate">
+           <label for="password_confirmation">Password confirmation</label>
+          </div>
+
+           <span *ngIf="signUpUser.password != signUpUser.passwordConfirmation"
+                style="color:red">
+            Passwords must match
+           </span>
+
+      <button type="submit"
+              [disabled]="!(register.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)"
+              class="waves-effect waves-light btn blue right" (click) = "(onSignUpSubmit())" [routerLink]="['/home']" >
+        Sign up
+      </button>
+      
+      <div class="form-control-feedback">
+        <span class="grey-text text-darken-2">
+          Already have an account? <a [routerLink]="['/login']">Click here to Login.</a>
+        </span>
+      </div>
+    </form>
+  
+  </div>
+</div>
+
+
+

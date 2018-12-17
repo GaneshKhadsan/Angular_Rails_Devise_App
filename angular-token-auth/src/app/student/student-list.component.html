@@ -1,0 +1,19 @@
+
+<br>
+<br>
+<br>
+<div class="ui four stackable cards">
+  <div class="card" *ngFor="let student of students">
+    <a (click)="goToShow(student)">
+      <div class="card-block">
+        <h3 class="card-title">
+        {{student.name}}
+      </h3>
+        <p card-text>
+          Email: {{student.email}}
+       </p>
+        <a class="btn btn-primary">View Student</a>
+      </div>
+    </a>
+  </div>
+</div>
